@@ -9,7 +9,7 @@ export interface Gif {
 }
 
 export async function fetchGifs(term: string): Promise<Gif[]> {
-  const API_KEY = process.env.GIPHY_API_KEY;
+  const API_KEY = process.env.NEXT_PUBLIC_GIPHY_API_KEY;
   if (!API_KEY) throw new Error("Missing Giphy API key");
 
   const endpoint =
