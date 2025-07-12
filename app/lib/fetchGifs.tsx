@@ -5,6 +5,9 @@ export interface Gif {
     downsized_medium: {
       url: string;
     };
+    original: {
+      mp4: string;
+    };
   };
 }
 

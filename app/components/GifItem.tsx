@@ -9,6 +9,9 @@ interface GifItemProps {
       downsized_medium: {
         url: string;
       };
+      original: {
+        mp4: string;
+      };
     };
   };
 }
@@ -29,7 +32,15 @@ export default function GifItem({ gif }: GifItemProps) {
 
   return (
     <div className="gif-wrapper">
-      <img src={gif.images.downsized_medium.url} alt={gif.title} />
+      <video
+        src={gif.images.original.mp4}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="gif-video"
+        aria-label={gif.title}
+      />
       {copied && <span className="copied-tooltip">Copied!</span>}
       <button className="copy-btn" onClick={handleCopy}>
         📋
