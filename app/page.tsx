@@ -1,8 +1,8 @@
-import { fetchGifs, Gif } from './lib/fetchGifs'
-import GifItem from './components/GifItem'
+import { fetchGifs, Gif } from "./lib/fetchGifs";
+import GifItem from "./components/GifItem";
 
 export default async function HomePage() {
-  const trending: Gif[] = await fetchGifs('trending')
+  const trending: Gif[] = await fetchGifs("trending");
 
   return (
     <div>
@@ -13,5 +13,5 @@ export default async function HomePage() {
         ))}
       </div>
     </div>
-  )
+  );
 }
