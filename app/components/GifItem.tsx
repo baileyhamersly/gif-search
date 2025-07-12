@@ -30,12 +30,10 @@ export default function GifItem({ gif }: GifItemProps) {
   return (
     <div className="gif-wrapper">
       <img src={gif.images.downsized_medium.url} alt={gif.title} />
-      <div className="copy-container">
-        <button className="copy-btn" onClick={handleCopy}>
-          📋
-        </button>
-        {copied && <span className="copied-tooltip">Copied!</span>}
-      </div>
+      {copied && <span className="copied-tooltip">Copied!</span>}
+      <button className="copy-btn" onClick={handleCopy}>
+        📋
+      </button>
     </div>
   );
 }
