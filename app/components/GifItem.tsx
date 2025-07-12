@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 interface GifItemProps {
   gif: {
@@ -13,13 +14,28 @@ interface GifItemProps {
 }
 
 export default function GifItem({ gif }: GifItemProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      //Add url to clipboard and display "Copied" toast message for 1.5 seconds
+      await navigator.clipboard.writeText(gif.images.downsized_medium.url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      console.error("Failed to copy GIF URL:", err);
+    }
+  };
+
   return (
-    <div className="gif-item">
-      <img
-        src={gif.images.downsized_medium.url}
-        alt={gif.title}
-        className="gif-img"
-      />
+    <div className="gif-wrapper">
+      <img src={gif.images.downsized_medium.url} alt={gif.title} />
+      <div className="copy-container">
+        <button className="copy-btn" onClick={handleCopy}>
+          📋
+        </button>
+        {copied && <span className="copied-tooltip">Copied!</span>}
+      </div>
     </div>
   );
 }

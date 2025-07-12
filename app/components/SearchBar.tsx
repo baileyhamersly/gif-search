@@ -9,7 +9,6 @@ export default function SearchBar() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("query", query);
     const trimmed = query.trim();
     // Only route if there is a valid search query i.e. not just spaces
     if (trimmed) {
