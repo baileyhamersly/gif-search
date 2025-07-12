@@ -15,9 +15,7 @@ export async function fetchGifs(term: string): Promise<Gif[]> {
   const endpoint =
     term === "trending"
       ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=24`
-      : `https://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(
-          term
-        )}&api_key=${API_KEY}&limit=24`;
+      : `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=${API_KEY}&limit=24`;
 
   const res = await fetch(endpoint);
   if (!res.ok) {
