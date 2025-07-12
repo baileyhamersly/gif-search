@@ -1,30 +1,17 @@
-'use client'
-import { useState } from 'react'
-import './globals.css'
+import { fetchGifs, Gif } from './lib/fetchGifs'
+import GifItem from './components/GifItem'
 
-export default function HomePage() {
-  const [query, setQuery] = useState<string>('')
-  const [search, setSearch] = useState<string>('trending')
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSearch(query)
-  }
+export default async function HomePage() {
+  const trending: Gif[] = await fetchGifs('trending')
 
   return (
-    <main className="container">
-      <h1 className="title">Giphy Clone</h1>
-      <form onSubmit={handleSubmit} className="search-form">
-        <input
-          type="text"
-          placeholder="Search for GIFs"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="search-input"
-        />
-        <div>The current search is : {search}
-        </div>
-      </form>
-    </main>
+    <div>
+      <h2 className="title">Trending GIFs</h2>
+      <div className="grid">
+        {trending.map((gif) => (
+          <GifItem key={gif.id} gif={gif} />
+        ))}
+      </div>
+    </div>
   )
 }

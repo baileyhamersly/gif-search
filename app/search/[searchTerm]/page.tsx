@@ -1,11 +1,21 @@
-'use client'
-import './globals.css'
+import { fetchGifs, Gif } from '../../lib/fetchGifs'
+import GifItem from '../../components/GifItem'
 
-export default function Search() {
+interface SearchPageProps {
+  params: { searchTerm: string }
+}
+
+export default async function SearchPage({ params }: SearchPageProps) {
+  const gifs: Gif[] = await fetchGifs(params.searchTerm)
 
   return (
-<div>
-    Search Page
-</div>
+    <div>
+      <h2 className="title">Results for: {params.searchTerm}</h2>
+      <div className="grid">
+        {gifs.map((gif) => (
+          <GifItem key={gif.id} gif={gif} />
+        ))}
+      </div>
+    </div>
   )
 }
