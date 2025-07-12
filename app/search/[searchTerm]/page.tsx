@@ -1,5 +1,5 @@
-import { fetchGifs, Gif } from '../../lib/fetchGifs'
-import GifItem from '../../components/GifItem'
+import { fetchGifs, Gif } from '@/app/lib/fetchGifs'
+import GifItem from '@/app/components/GifItem'
 
 interface SearchPageProps {
   params: { searchTerm: string }
