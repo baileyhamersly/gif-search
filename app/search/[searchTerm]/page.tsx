@@ -9,26 +9,36 @@ export default async function SearchPage({ params }: SearchPageProps) {
   let gifs: Gif[] = [];
   try {
     gifs = await fetchGifs(params.searchTerm);
-  } catch (err) {
+  } catch (err: any) {
     console.error("Error loading gifs:", err);
     // You can render a fallback UI if needed
     return (
       <div>
         <h2>Error loading search results</h2>
-        <p>Please try again later.</p>
+        <p>{err.message}</p>
       </div>
     );
   }
   return (
     <div>
-      <h2 className="title">
-        Results for: {decodeURIComponent(params.searchTerm)}
-      </h2>
-      <div className="grid">
-        {gifs.map((gif) => (
-          <GifItem key={gif.id} gif={gif} />
-        ))}
-      </div>
+      {gifs.length > 0 ? (
+        <div>
+          <h2 className="title">
+            Results for: {decodeURIComponent(params.searchTerm)}
+          </h2>
+          <div className="grid">
+            {gifs.map((gif) => (
+              <GifItem key={gif.id} gif={gif} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h2 className="title">
+            No Results Found for: {decodeURIComponent(params.searchTerm)}
+          </h2>
+        </div>
+      )}
     </div>
   );
 }

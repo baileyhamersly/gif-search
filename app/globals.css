@@ -37,8 +37,13 @@ footer {
   border-radius: 4px;
 }
 
+.search-button {
+  padding: 0 6px;
+  margin: 2px 10px;
+}
+
 .grid {
-  column-count: 3; /* TODO: Add screen size options */
+  column-count: 3;
   column-gap: 16px;
   padding: 16px;
 }
