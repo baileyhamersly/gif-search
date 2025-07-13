@@ -17,6 +17,11 @@ body {
   text-align: center;
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+}
+
 .search-form {
   display: flex;
   justify-content: center;
