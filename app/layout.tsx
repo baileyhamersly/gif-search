@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import SearchBar from "./components/SearchBar";
 import "./globals.css";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Gif Search",
@@ -13,7 +14,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <div className="container">
-          <h1 className="title">Gif Search</h1>
+          <h1 className="title">
+            <Link href="/" style={{ textDecoration: "none" }}>
+              Gif Search
+            </Link>
+          </h1>
           <SearchBar />
           {children}
         </div>

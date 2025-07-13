@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { fetchGifs, fetchMultipleRandomGifs, Gif } from './lib/fetchGifs';
 import GifItem from './components/GifItem';
 
