@@ -21,7 +21,6 @@ export async function fetchGifs(term: string): Promise<Gif[]> {
       ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=24`
       : `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=${API_KEY}&limit=24`;
   const res = await fetch(endpoint);
-  console.log("fetch res ", res);
 
   if (!res.ok) {
     throw new Error(`Giphy API Issue: ${res.status} ${res.statusText}`);
@@ -38,10 +37,12 @@ export async function fetchGifs(term: string): Promise<Gif[]> {
 
 // Helper to fetch a single random gif
 async function fetchRandomGif(): Promise<Gif> {
-  //Using random seed so not all the random gifs fetched are the same
-  const randomSeed = Math.random().toString(36).substring(7);
+  //Adding a random seed to force unique randomly selected gifs
+  const randomSeed = `${Date.now()}-${Math.random().toString(36).substring(2)}`;
   const res = await fetch(
-    `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&random_id=${randomSeed}`
+    `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&random_id=${randomSeed}`,
+    // disable fetch caching so that once deployed the gifs are differnt on every homepage render
+    { cache: "no-store" }
   );
 
   if (!res.ok) {
