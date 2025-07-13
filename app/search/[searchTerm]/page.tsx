@@ -7,7 +7,6 @@ interface SearchPageProps {
 
 export default async function SearchPage({ params }: SearchPageProps) {
   let gifs: Gif[] = [];
-
   try {
     gifs = await fetchGifs(params.searchTerm);
   } catch (err) {
@@ -22,7 +21,9 @@ export default async function SearchPage({ params }: SearchPageProps) {
   }
   return (
     <div>
-      <h2 className="title">Results for: {params.searchTerm}</h2>
+      <h2 className="title">
+        Results for: {decodeURIComponent(params.searchTerm)}
+      </h2>
       <div className="grid">
         {gifs.map((gif) => (
           <GifItem key={gif.id} gif={gif} />

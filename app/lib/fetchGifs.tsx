@@ -21,11 +21,17 @@ export async function fetchGifs(term: string): Promise<Gif[]> {
       : `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=${API_KEY}&limit=24`;
 
   const res = await fetch(endpoint);
+  console.log("fetch res ", res);
+
   if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Giphy API failed: ${res.status} ${body}`);
+    throw new Error(`Giphy API Issue: ${res.status} ${res.statusText}`);
   }
 
-  const json = await res.json();
-  return json.data;
+  const data = await res.json();
+
+  if (!data || !Array.isArray(data.data)) {
+    throw new Error("Invalid response format from Giphy");
+  }
+
+  return data.data;
 }
