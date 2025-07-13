@@ -112,3 +112,20 @@ footer {
   opacity: 0.9;
   z-index: 100;
 }
+
+.random-grid-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 40px;
+}
+
+.random-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.trending-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+

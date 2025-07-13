@@ -11,10 +11,11 @@ export interface Gif {
   };
 }
 
-export async function fetchGifs(term: string): Promise<Gif[]> {
-  const API_KEY = process.env.NEXT_PUBLIC_GIPHY_API_KEY;
-  if (!API_KEY) throw new Error("Missing Giphy API key");
+const API_KEY = process.env.NEXT_PUBLIC_GIPHY_API_KEY;
 
+if (!API_KEY) throw new Error("Missing Giphy API key");
+
+export async function fetchGifs(term: string): Promise<Gif[]> {
   const endpoint =
     term === "trending"
       ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=24`
@@ -33,4 +34,27 @@ export async function fetchGifs(term: string): Promise<Gif[]> {
   }
 
   return data.data;
+}
+
+// Helper to fetch a single random gif
+async function fetchRandomGif(): Promise<Gif> {
+  //Using random seed so not all the random gifs fetched are the same
+  const randomSeed = Math.random().toString(36).substring(7);
+  const res = await fetch(
+    `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&random_id=${randomSeed}`
+  );
+
+  if (!res.ok) {
+    throw new Error(`Random API failed: ${res.status} ${res.statusText}`);
+  }
+
+  const data = await res.json();
+  return data.data;
+}
+
+export async function fetchMultipleRandomGifs(count: number): Promise<Gif[]> {
+  const results = await Promise.all(
+    Array.from({ length: count }, () => fetchRandomGif())
+  );
+  return results;
 }
