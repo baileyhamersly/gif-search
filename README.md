@@ -26,7 +26,7 @@ Hosted on baileygocode.com
 
 ## Testing Errors
 - Trigger a 429 by reloading homepage and/or searching terms over 100 times in an hour
-- Trigger a 414 by putting more than 100 characters in search term
+- Trigger a 414 by putting more than 50 characters in search term
 
 
 ## Project Structure
@@ -41,3 +41,9 @@ Hosted on baileygocode.com
   layout.tsx             ← Shared layout
   page.tsx               ← Homepage (trending + random)
   globals.css
+
+## Future Improvements
+- Add a re-roll for the 3 random gifs
+- Loading skeleton
+- Handling error state in context
+- Add infinite scrolling or pagination
