@@ -114,9 +114,21 @@ footer {
 }
 
 .random-grid-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   max-height: 300px;
-  overflow-y: auto;
-  margin-bottom: 40px;
+  padding: 1rem 0;
+  overflow: hidden; /* Hide scrollbars */
+  flex-wrap: nowrap;
+}
+
+.random-grid-wrapper img {
+  max-height: 100%;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 .random-title {

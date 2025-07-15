@@ -36,8 +36,10 @@ Hosted on baileygocode.com
     SearchBar.tsx
   /lib
     fetchGifs.ts         ← All API fetch logic lives here
-  /search/[searchTerm]
-    page.tsx             ← Dynamic route for search results
+  /search
+    page.tsx             ← Fallback for no search term in URL
+    /[searchTerm]
+      page.tsx           ← Dynamic route for search results
   layout.tsx             ← Shared layout
   page.tsx               ← Homepage (trending + random)
   globals.css

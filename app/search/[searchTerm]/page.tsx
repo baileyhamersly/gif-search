@@ -10,8 +10,8 @@ export default async function SearchPage({ params }: SearchPageProps) {
   try {
     gifs = await fetchGifs(params.searchTerm);
   } catch (err: any) {
+    // Render fallback UI on error
     console.error("Error loading gifs:", err);
-    // You can render a fallback UI if needed
     return (
       <div>
         <h2>Error loading search results</h2>
