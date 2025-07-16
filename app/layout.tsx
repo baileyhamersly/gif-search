@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <div className="container">
           <h1 className="title">
-            <Link href="/" style={{ textDecoration: "none" }}>
+            <Link href="/" className="link-no-underline">
               Gif Search
             </Link>
           </h1>

@@ -41,8 +41,16 @@ export default function GifItem({ gif }: GifItemProps) {
         className="gif-video"
         aria-label={gif.title}
       />
-      {copied && <span className="copied-tooltip">Copied!</span>}
-      <button className="copy-btn" onClick={handleCopy}>
+      {copied && (
+        <span className="copied-tooltip" aria-live="polite">
+          Copied!
+        </span>
+      )}
+      <button
+        className="copy-btn"
+        aria-label="Copy GIF URL"
+        onClick={handleCopy}
+      >
         📋
       </button>
     </div>
