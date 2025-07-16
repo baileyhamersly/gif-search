@@ -28,21 +28,20 @@ Hosted on baileygocode.com
 - Trigger a 429 by reloading homepage and/or searching terms over 100 times in an hour
 - Trigger a 414 by putting more than 50 characters in search term
 
-
 ## Project Structure
 /app
-  /components
-    GifItem.tsx
-    SearchBar.tsx
-  /lib
-    fetchGifs.ts         ← All API fetch logic lives here
-  /search
-    page.tsx             ← Fallback for no search term in URL
-    /[searchTerm]
-      page.tsx           ← Dynamic route for search results
-  layout.tsx             ← Shared layout
-  page.tsx               ← Homepage (trending + random)
-  globals.css
+├── components
+│   ├── GifItem.tsx
+│   └── SearchBar.tsx
+├── lib
+│   └── fetchGifs.ts      ← All API fetch logic lives here
+├── search
+│   ├── page.tsx          ← Fallback for no search term in URL
+│   └── [searchTerm]
+│       └── page.tsx      ← Dynamic route for search results
+├── layout.tsx
+├── page.tsx              ← Homepage (trending + random)
+└── globals.css
 
 ## Future Improvements
 - Add a re-roll for the 3 random gifs
