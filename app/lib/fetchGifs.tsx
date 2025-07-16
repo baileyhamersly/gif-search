@@ -20,8 +20,10 @@ export async function fetchGifs(term: string): Promise<Gif[]> {
     term === "trending"
       ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=24`
       : `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=${API_KEY}&limit=24`;
-  const res = await fetch(endpoint);
-
+  const res = await fetch(endpoint, {
+    next: { revalidate: 3600 }, // cache for 1 hour
+  });
+  
   if (!res.ok) {
     throw new Error(`Giphy API Issue: ${res.status} ${res.statusText}`);
   }

@@ -1,7 +1,5 @@
-export const dynamic = "force-dynamic";
-
-import { fetchGifs, fetchMultipleRandomGifs, Gif } from './lib/fetchGifs';
-import GifItem from './components/GifItem';
+import { fetchGifs, fetchMultipleRandomGifs, Gif } from "./lib/fetchGifs";
+import GifItem from "./components/GifItem";
 
 export default async function HomePage() {
   let trendingGifs: Gif[] = [];
