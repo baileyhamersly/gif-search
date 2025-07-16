@@ -29,6 +29,7 @@ Hosted on baileygocode.com
 - Trigger a 414 by putting more than 50 characters in search term
 
 ## Project Structure
+```
 /app
 ├── components
 │   ├── GifItem.tsx
@@ -42,7 +43,7 @@ Hosted on baileygocode.com
 ├── layout.tsx
 ├── page.tsx              ← Homepage (trending + random)
 └── globals.css
-
+```
 ## Future Improvements
 - Add a re-roll for the 3 random gifs
 - Loading skeleton
